@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app {
+    background: #fff;
+    width: 600px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* Summary */
+.summary {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.summary div {
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.summary div:first-child {
+    grid-column: span 2;
+}
+
+.income h4 {
+    color: green;
+}
+
+.expense h4 {
+    color: red;
+}
+
+/* Add */
+.add-transaction input,
+.add-transaction select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.add-transaction button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    background: #667eea;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.add-transaction button:hover {
+    background: #5563d6;
+}
+
+/* History */
+ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+li {
+    background: #f5f5f5;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 5px solid;
+}
+
+li.plus {
+    border-color: green;
+}
+
+li.minus {
+    border-color: red;
+}
+
+li span {
+    font-size: 12px;
+    color: #555;
+}
+
+li button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+}
