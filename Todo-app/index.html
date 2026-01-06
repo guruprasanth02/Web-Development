@@ -1,37 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Advanced To-Do App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Advanced To-Do App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="app">
-    <center>
-        <h2 style="font-size: xx-large;">Task Manager</h2>
-    </center>
- 
-   
 
-    <div class="task-input">
-        <input type="text" id="taskText" placeholder="Enter task">
-        <input type="date" id="taskDate">
-        <select id="priority">
-            <option value="Low">Low</option>
-            <option value="Medium">Medium</option>
-            <option value="High">High</option>
-        </select>
-        <button onclick="addTask()">Add</button>
+<!-- WRAPPER -->
+<div class="page-container">
+
+  <!-- App Title (Outside Card) -->
+  <h1 class="main-title">TODO LIST APP</h1>
+
+  <!-- App Card -->
+  <div class="app">
+
+    <!-- Header -->
+    <header class="header">
+      <div>
+        <h1 style="font-size: xx-large;">My Tasks</h1>
+        <p id="stats">0 tasks</p>
+      </div>
+      <button id="themeToggle" title="Toggle Dark Mode">🌙</button>
+    </header>
+
+    <!-- Add Task -->
+    <div class="add-task">
+      <input type="text" id="taskText" placeholder="Enter task">
+      <select id="taskCategory">
+        <option>Work</option>
+        <option>Personal</option>
+        <option>Study</option>
+      </select>
+      <select id="taskPriority">
+        <option value="low">Low</option>
+        <option value="medium">Medium</option>
+        <option value="high">High</option>
+      </select>
+      <input type="date" id="taskDate">
+      <button onclick="addTask()">Add Task</button>
     </div>
 
+    <!-- Filters -->
     <div class="filters">
-        <button onclick="filterTasks('all')">All</button>
-        <button onclick="filterTasks('active')">Active</button>
-        <button onclick="filterTasks('completed')">Completed</button>
+      <button onclick="setFilter('all')">All</button>
+      <button onclick="setFilter('active')">Active</button>
+      <button onclick="setFilter('completed')">Completed</button>
     </div>
 
-    <ul id="taskList"></ul>
+    <!-- Tasks -->
+    <div id="taskList"></div>
+
+    <!-- Empty -->
+    <div id="empty">🎉 No tasks yet</div>
+
+  </div>
 </div>
 
 <script src="script.js"></script>
