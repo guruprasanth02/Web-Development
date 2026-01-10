@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Learning Portal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginPage" class="center-page">
+  <div class="card auth">
+    <h2 id="authTitle">Student Login</h2>
+    <form id="authForm">
+      <div id="loginFields">
+        <input id="loginEmail" type="email" placeholder="Email" required>
+        <input id="loginPassword" type="password" placeholder="Password" required>
+      </div>
+
+      <div id="registerFields" class="hidden">
+        <input id="regUsername" placeholder="Full name" required>
+        <input id="regEmail" type="email" placeholder="Email" required>
+        <input id="regPassword" type="password" placeholder="Password" required>
+      </div>
+
+      <p id="authMessage" class="auth-msg"></p>
+
+      <div class="actions">
+        <button type="submit" id="authSubmit">Login</button>
+        <button type="button" id="toggleAuth">New user? Register</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- PORTAL -->
+<div id="portal" class="portal hidden">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <h2>LMS</h2>
+    <nav>
+      <a onclick="showModule('dashboard')">Dashboard</a>
+      <a onclick="showModule('courses')">Courses</a>
+      <a onclick="showModule('notes')">Notes</a>
+      <a onclick="showModule('quiz')">Quiz</a>
+      <a onclick="showModule('profile')">Profile</a>
+    </nav>
+  </aside>
+
+  <!-- Main -->
+  <main>
+
+    <header class="topbar">
+      <h3 id="welcome"></h3>
+      <button  class="logout" onclick="logout()">Logout</button>
+    </header>
+
+    <!-- DASHBOARD -->
+    <section id="dashboard" class="module">
+      <h2>Dashboard</h2>
+      <p id="quote">Loading learning tip...</p>
+
+      <div class="stats">
+        <div class="stat">Courses: <strong id="courseCount">0</strong></div>
+        <div class="stat">Progress: <strong id="progress">0%</strong></div>
+      </div>
+
+      <div class="timer">
+        <h3>Study Timer</h3>
+        <p id="timer">25:00</p>
+        <button class="start" onclick="startTimer()">Start</button>
+        <button class="stop" onclick="stopTimer()">Stop</button>
+        <button class="reset" onclick="resetTimer()">Reset</button>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section id="courses" class="module hidden">
+      <h2>Courses</h2>
+      <button  class="course" onclick="addCourse()">Enroll New Course</button>
+      <ul id="courseList"></ul>
+    </section>
+
+    <!-- NOTES -->
+    <section id="notes" class="module hidden">
+      <h2>Notes</h2>
+      <textarea id="notesArea" placeholder="Write your notes here..."></textarea>
+        <button class="savenotes" onclick="saveNotes()">Save Notes</button>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz" class="module hidden">
+      <h2>Quiz</h2>
+      <p>What does HTML stand for?</p>
+      <button class="opt1" onclick="checkQuiz('wrong')">Hyperlinks Text Markup Language</button>
+      <button class="opt2" onclick="checkQuiz('correct')">HyperText Markup Language</button>
+      <p id="quizResult"></p>
+    </section>
+
+    <!-- PROFILE -->
+    <section id="profile" class="module hidden">
+      <h2>Profile</h2>
+      <p>Name: <strong id="profileName"></strong></p>
+    </section>
+
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
