@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus v2 | Productivity Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="auth-screen" class="page-overlay">
+        <div class="glass-card auth-box">
+            <div class="brand-logo">NX</div>
+            
+            <form id="login-form" class="auth-form" onsubmit="event.preventDefault(); app.login()">
+                <h2>Welcome Back</h2>
+                <p class="form-description">Sign in to your account</p>
+                
+                <div class="form-group">
+                    <label for="user-in">Username or Email</label>
+                    <input type="text" id="user-in" placeholder="Enter your username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pass-in">Password</label>
+                    <input type="password" id="pass-in" placeholder="Enter your password" required>
+                </div>
+                
+                <button class="btn-primary" type="submit">Sign In</button>
+                
+                <p class="toggle-text">Don't have an account? <button type="button" onclick="app.toggleAuth(true)" style="background:none;border:none;color:var(--accent);cursor:pointer;font-weight:600;">Create Account</button></p>
+            </form>
+
+            <form id="register-form" class="auth-form hidden" onsubmit="event.preventDefault(); app.register()">
+                <h2>Create Account</h2>
+                <p class="form-description">Join and start managing your tasks</p>
+                
+                <div class="form-group">
+                    <label for="reg-user">Username</label>
+                    <input type="text" id="reg-user" placeholder="Choose a username" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="reg-pass">Password</label>
+                    <input type="password" id="reg-pass" placeholder="Create a strong password" required>
+                </div>
+                
+                <button class="btn-primary btn-register" type="submit">Create Account</button>
+                
+                <p class="toggle-text">Already have an account? <button type="button" onclick="app.toggleAuth(false)" style="background:none;border:none;color:var(--accent);cursor:pointer;font-weight:600;">Sign In</button></p>
+            </form>
+        </div>
+    </div>
+    <main id="main-app" class="app-layout hidden">
+        <aside class="sidebar">
+            <div class="profile-card">
+                <div class="avatar-wrapper">
+                    <img id="pfp" src="https://ui-avatars.com/api/?name=User&background=random" alt="Avatar">
+                    <input type="file" id="img-up" hidden>
+                    <label for="img-up" class="upload-badge">＋</label>
+                </div>
+                <h3 id="user-name">Workspace</h3>
+            </div>
+            <nav class="nav-menu">
+                <div class="nav-item active">📊 Dashboard</div>
+                <div class="nav-item" onclick="app.toggleTheme()" style="cursor:pointer">🌓 Switch Theme</div>
+                <div class="nav-item" onclick="app.logout()" style="cursor:pointer">🚪 Logout</div>
+            </nav>
+        </aside>
+
+        <section class="viewport">
+            <header class="hero-header glass-card">
+                <div class="weather-hero">
+                    <h2 id="temp">--°C</h2>
+                    <p id="loc">Detecting Location...</p>
+                </div>
+                <div class="quote-hero">
+                    <p id="quote">"Focus on being productive instead of busy."</p>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <div class="card glass-card focus-card">
+                    <small>FOCUS TIMER</small>
+                    <div class="timer-display" id="timer">25:00</div>
+                    <div class="card-actions">
+                        <button class="btn-sml" onclick="app.toggleTimer()">Start / Stop</button>
+                        <button class="btn-sml outline" onclick="app.resetTimer()">Reset</button>
+                    </div>
+                </div>
+
+                <div class="card glass-card task-card">
+                    <div class="card-header">
+                        <small>DAILY TASKS</small>
+                        <span id="task-count" class="badge">0</span>
+                    </div>
+                    <div class="input-row">
+                        <input type="text" id="t-input" placeholder="What's next?">
+                        <button onclick="app.addTask()">Add</button>
+                    </div>
+                    <ul id="t-list" class="styled-list"></ul>
+                </div>
+
+                <div class="card glass-card notes-card">
+                    <small>QUICK NOTES</small>
+                    <label for="n-area" class="sr-only">Quick notes</label>
+                    <textarea id="n-area" placeholder="Write your thoughts here..." aria-describedby="notes-help"></textarea>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
